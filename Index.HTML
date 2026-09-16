@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShoeZone - Shoes Store</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #222;
+        }
+
+        /* Header */
+        header {
+            background-color: #111;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* Hero */
+        .hero {
+            background: #ddd;
+            padding: 70px 8%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .shop-btn {
+            background-color: #111;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Search */
+        .search {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .search input {
+            width: 70%;
+            max-width: 500px;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Products */
+        .products {
+            width: 85%;
+            margin: auto;
+            padding: 30px 0 60px;
+        }
+
+        .products h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px #ccc;
+        }
+
+        .shoe-image {
+            font-size: 90px;
+            padding: 25px;
+            background-color: #eee;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .cart-btn {
+            background-color: #111;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-btn:hover {
+            background-color: #333;
+        }
+
+        /* About */
+        .about {
+            background-color: white;
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        .about h2 {
+            margin-bottom: 15px;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 80%;
+            max-width: 600px;
+            padding: 12px;
+            margin: 7px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact button {
+            background-color: #111;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .product-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+
+            .search input {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">👟 ShoeZone</div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Step Into Style 👟</h1>
+
+        <p>
+            Discover comfortable and stylish shoes for every occasion.
+        </p>
+
+        <a href="#products" class="shop-btn">
+            Shop Now
+        </a>
+    </section>
+
+
+    <!-- Search -->
+    <div class="search">
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="Search shoes..."
+            onkeyup="searchProducts()">
+    </div>
+
+
+    <!-- Products -->
+    <section class="products" id="products">
+
+        <h2>Our Shoes</h2>
+
+        <div class="product-container">
+
+            <div class="product">
+                <div class="shoe-image">👟</div>
+                <h3>Running Shoes</h3>
+                <p>Comfortable sports shoes</p>
+                <div class="price">₹1,999</div>
+                <button class="cart-btn" onclick="addCart('Running Shoes')">
+                    Add to Cart
+                </button>
+            </div>
+
+
+            <div class="product">
+                <div class="shoe-image">🥾</div>
+                <h3>Hiking Shoes</h3>
+                <p>Strong outdoor shoes</p>
+                <div class="price">₹2,499</div>
+                <button class="cart-btn" onclick="addCart('Hiking Shoes')">
+                    Add to Cart
+                </button>
+            </div>
+
+
+            <div class="product">
+                <div class="shoe-image">👞</div>
+                <h3>Formal Shoes</h3>
+                <p>Perfect for office and events</p>
+                <div class="price">₹2,299</div>
+                <button class="cart-btn" onclick="addCart('Formal Shoes')">
+                    Add to Cart
+                </button>
+            </div>
+
+
+            <div class="product">
+                <div class="shoe-image">👟</div>
+                <h3>Casual Shoes</h3>
+                <p>Stylish everyday footwear</p>
+                <div class="price">₹1,799</div>
+                <button class="cart-btn" onclick="addCart('Casual Shoes')">
+                    Add to Cart
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- About -->
+    <section class="about" id="about">
+
+        <h2>About ShoeZone</h2>
+
+        <p>
+            ShoeZone is a simple online shoe store where customers
+            can explore different types of shoes at affordable prices.
+        </p>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+
+        <h2>Contact Us</h2>
+
+        <br>
+
+        <input type="text" placeholder="Your Name">
+
+        <input type="email" placeholder="Your Email">
+
+        <textarea placeholder="Your Message"></textarea>
+
+        <br><br>
+
+        <button onclick="sendMessage()">
+            Send Message
+        </button>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>© 2026 ShoeZone</p>
+
+        <p>Created by Shaikh Rehan</p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function addCart(product) {
+
+            alert(product + " added to cart!");
+
+        }
+
+
+        function sendMessage() {
+
+            alert("Thank you! Your message has been submitted.");
+
+        }
+
+
+        function searchProducts() {
+
+            let input =
+                document.getElementById("searchBox").value.toLowerCase();
+
+            let products =
+                document.querySelectorAll(".product");
+
+            products.forEach(function(product) {
+
+                let name =
+                    product.querySelector("h3").innerText.toLowerCase();
+
+                if (name.includes(input)) {
+
+                    product.style.display = "block";
+
+                } else {
+
+                    product.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
